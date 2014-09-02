@@ -23,4 +23,7 @@ typedef NS_ENUM (NSUInteger, RefreshTag)
 
 @property (nonatomic, assign) RefreshTag loadtag;
 
+//实时更新箭头
+- (void)qhRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
+
 @end

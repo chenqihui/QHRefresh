@@ -38,9 +38,9 @@
     [_tableView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_tableView];
     
-    _pullRefreshView = [[QHPullRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, PULL_HEIGHT)];
+    _pullRefreshView = [[QHPullRefreshView alloc] initWithFrame:CGRectMake(0, -0, self.view.width, PULL_HEIGHT)];
     [self.view insertSubview:_pullRefreshView belowSubview:_tableView];
-//    [self.view addSubview:_pullRefreshView];
+//    [_tableView addSubview:_pullRefreshView];
     
     _loadMoreView = [[QHLoadMoreView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 30)];
     [_loadMoreView setBackgroundColor:[UIColor whiteColor]];
@@ -82,6 +82,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //    CGFloat scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y;
+    [_pullRefreshView qhRefreshScrollViewDidScroll:scrollView];
     float f = scrollView.contentOffset.y;
     if (f < 0)
     {
