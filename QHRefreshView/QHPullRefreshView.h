@@ -8,22 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM (NSUInteger, RefreshTag)
-{
-    kRefreshTag_loading,
-    kRefreshTag_loaded,
-    kRefreshTag_willloading,
-    kRefreshTag_finish,
-    kRefreshTag_error
-};
+#import "QHRefreshTag.h"
 
 @interface QHPullRefreshView : UIView
 
 @property (nonatomic, retain) UILabel *loadLabel;
 
-@property (nonatomic, assign) RefreshTag loadtag;
+@property (nonatomic, assign) PullRefreshTag loadtag;
 
 //实时更新箭头
-- (void)qhRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
+- (void)qhPullRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
 
 @end

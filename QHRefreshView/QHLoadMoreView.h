@@ -8,15 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM (NSUInteger, LoadMoreTag)
-{
-    kLoadMoreTag_noneData = 1,
-    kLoadMoreTag_loading,
-    kLoadMoreTag_loaded,
-    kLoadMoreTag_loadNoneData,
-    kLoadMoreTag_reload,
-    kLoadMoreTag_error
-};
+#import "QHRefreshTag.h"
 
 @interface QHLoadMoreView : UIView
 

@@ -12,6 +12,7 @@
 #import "RefreshTableViewController.h"
 #import "RefreshViewController.h"
 #import "RefreshControlTableViewController.h"
+#import "QHRefreshDemoViewController.h"
 
 @implementation AppDelegate
 
@@ -45,8 +46,12 @@
         RefreshControlTableViewController *refreshControlTVC = [[RefreshControlTableViewController alloc] init];
         UITabBarItem *item4 = [[UITabBarItem alloc]initWithTitle:@"UIRefreshControl" image:nil tag:1];
         refreshControlTVC.tabBarItem = item4;
+        //
+        QHRefreshDemoViewController *qhRefreshDemoVC = [[QHRefreshDemoViewController alloc] init];
+        UITabBarItem *item5 = [[UITabBarItem alloc]initWithTitle:@"QHRefresh" image:nil tag:1];
+        qhRefreshDemoVC.tabBarItem = item5;
         
-        tabBarC.viewControllers = @[refreshTableVC, refreshVC, refreshControlTVC];
+        tabBarC.viewControllers = @[refreshTableVC, refreshVC, refreshControlTVC, qhRefreshDemoVC];
         mainVC = tabBarC;
     }
     

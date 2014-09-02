@@ -82,21 +82,21 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //    CGFloat scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y;
-    [_pullRefreshView qhRefreshScrollViewDidScroll:scrollView];
+    [_pullRefreshView qhPullRefreshScrollViewDidScroll:scrollView];
     float f = scrollView.contentOffset.y;
     if (f < 0)
     {
-        if (f < -_pullRefreshView.height && _pullRefreshView.loadtag != kRefreshTag_loading)
+        if (f < -_pullRefreshView.height && _pullRefreshView.loadtag != kPullRefreshTag_loading)
         {
-            if (_pullRefreshView.loadtag == kRefreshTag_loaded)
+            if (_pullRefreshView.loadtag == kPullRefreshTag_loaded)
             {
-                _pullRefreshView.loadtag = kRefreshTag_willloading;
+                _pullRefreshView.loadtag = kPullRefreshTag_willloading;
             }
         }else
         {
-            if (_pullRefreshView.loadtag != kRefreshTag_loaded && _pullRefreshView.loadtag != kRefreshTag_loading)
+            if (_pullRefreshView.loadtag != kPullRefreshTag_loaded && _pullRefreshView.loadtag != kPullRefreshTag_loading)
             {
-                _pullRefreshView.loadtag = kRefreshTag_loaded;
+                _pullRefreshView.loadtag = kPullRefreshTag_loaded;
             }
         }
     } else if (f > scrollView.contentSize.height - scrollView.frame.size.height)// (scrollPosition < 0)
@@ -115,9 +115,9 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (_pullRefreshView.loadtag == kRefreshTag_willloading)//拉拽放手时，只有kRefreshTag_willloading此状态才可以进行刷新
+    if (_pullRefreshView.loadtag == kPullRefreshTag_willloading)//拉拽放手时，只有kRefreshTag_willloading此状态才可以进行刷新
     {
-        _pullRefreshView.loadtag = kRefreshTag_loading;
+        _pullRefreshView.loadtag = kPullRefreshTag_loading;
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.2];
@@ -134,7 +134,7 @@
 {
     __async_main__, ^
     {
-        _pullRefreshView.loadtag = kRefreshTag_finish;
+        _pullRefreshView.loadtag = kPullRefreshTag_finish;
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.4];
         scrollView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);

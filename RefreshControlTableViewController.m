@@ -27,8 +27,8 @@
 
 -(void)RefreshViewControlEventValueChanged
 {
-    if (self.refreshControl.refreshing) {
-        NSLog(@"refreshing");
+    if (self.refreshControl.refreshing)
+    {
         self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新中"];
         
         [self performSelector:@selector(handleData) withObject:nil afterDelay:2];
@@ -46,7 +46,6 @@
 
 - (void)handleData
 {
-    NSLog(@"refreshed");
     [self.refreshControl endRefreshing];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
     
