@@ -58,7 +58,7 @@
 
 - (id)initRefreshWithScroll:(UIScrollView *)view pullRefreshView:(CGFloat)nPullRefreshViewHeight presentType:(QHRefreshHeaderViewPresentType)type loadMoreView:(CGFloat)nLoadMoreViewHeight delegate:(id<QHPullRefreshAndLoadMoreDelegate>)delegate titile:(NSArray *)arTitile
 {
-    NSArray *ar = arTitile;
+    NSArray *ar = [arTitile retain];
     if (ar.count == 2 && ar != nil)
     {
         NSArray *arPullRefresh = [ar objectAtIndex:0];
@@ -95,6 +95,8 @@
         _kLoadMore_reload = @"加载失败，重新拉动获取";
         _kLoadMore_error = @"无法加载，请检查网络";
     }
+    [ar release];
+    
     return [self initRefreshWithScroll:view pullRefreshView:nPullRefreshViewHeight presentType:type loadMoreView:nLoadMoreViewHeight delegate:delegate];
 }
 
@@ -268,6 +270,10 @@
     float f = scrollView.contentOffset.y;
     if (f < 0)
     {
+        if (_pullRefreshView == nil)
+        {
+            return;
+        }
         if (f < -_pullRefreshView.height && _pullRefreshTag != kPullRefreshTag_loading)
         {
             if (_pullRefreshTag == kPullRefreshTag_loaded)
@@ -289,8 +295,12 @@
                 self.pullRefreshTag = kPullRefreshTag_loaded;
             }
         }
-    } else if (f > scrollView.contentSize.height - scrollView.frame.size.height)// (scrollPosition < 0)
+    } else if (f > scrollView.contentSize.height - scrollView.frame.size.height)
     {
+        if (_loadMoreView == nil)
+        {
+            return;
+        }
         //立刻加载更多
         {
             if (_loadMoreTag == kLoadMoreTag_loaded || _loadMoreTag == kLoadMoreTag_reload)
@@ -308,6 +318,10 @@
 
 - (void)qhRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView
 {
+    if (_pullRefreshView == nil)
+    {
+        return;
+    }
     if (_pullRefreshTag == kPullRefreshTag_willloading)//拉拽放手时，只有kRefreshTag_willloading此状态才可以进行刷新
     {
         self.pullRefreshTag = kPullRefreshTag_loading;
