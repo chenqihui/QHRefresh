@@ -4,6 +4,7 @@ QHRefresh
 自定义的刷新控件（以下是本人的愚见，如有不对，望海涵，有建议可以提出，我也会改进）
 
 下拉刷新及上拉加载
+
 首先谈谈刷新及加载在现在iOS的使用方式，大致有下面几种（这里的实例是基于UITableView上的scrollView使用的）
 
 A、代表框架：EGOTableViewPullRefresh
@@ -62,5 +63,5 @@ C、为UIScrollView或者UITableVIew添加类别
  2> [self.tableView footerEndRefreshing];
 
 D、我的实现
-    我的做法比较倾向与A，结合B和C一些写法来实现，此代码要继续优化的哈
+    我的做法比较倾向与A，因为这样更方便的分离和单独给UIScrollView使用，然后结合B和C一些写法来实现，此代码要继续优化的哈
 
