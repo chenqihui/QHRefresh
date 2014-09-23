@@ -63,5 +63,6 @@ C、为UIScrollView或者UITableVIew添加类别
  2> [self.tableView footerEndRefreshing];
 
 D、我的实现
+
     我的做法比较倾向与A，因为这样更方便的分离和单独给UIScrollView使用，然后结合B和C一些写法来实现，此代码要继续优化的哈
 
