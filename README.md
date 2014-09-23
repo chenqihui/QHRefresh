@@ -5,14 +5,14 @@ QHRefresh
 
 下拉刷新及上拉加载
 
-首先谈谈刷新及加载在现在iOS的使用方式，大致有下面几种（这里的实例是基于UITableView上的scrollView使用的）
+   首先谈谈刷新及加载在现在iOS的使用方式，大致有下面几种（这里的实例是基于UITableView上的scrollView使用的）
 
 
 A、代表框架：EGOTableViewPullRefresh
 
    代码地址：https://github.com/enormego/EGOTableViewPullRefresh
    
-   为UITableView添加下拉刷新和上拉加载的UIView，UiView里面包含动画   逻辑等。它通过在UITableView里面的UIScrollViewDelegate回调给UIView，然后对应的把执行结果（即开始，结束），也是通过代理回调给UITableView来执行数据刷新等操作。
+    为UITableView添加下拉刷新和上拉加载的UIView，UiView里面包含动画   逻辑等。它通过在UITableView里面的UIScrollViewDelegate回调给UIView，然后对应的把执行结果（即开始，结束），也是通过代理回调给UITableView来执行数据刷新等操作。
    
 一般是下面的
 
@@ -57,7 +57,7 @@ B、代表框架：PullingRefreshTableView
    
    代码说明：http://www.cnblogs.com/PleaseInputEnglish/p/3485989.html
    
-   使用继承的方式，这里通过使用PullingRefreshTableView做为UITableVIew 的父类，在父类的UIScrollViewDelegate回调里面直接处理（内容其实是跟上面一样的）下拉上拉的逻辑动画等，补充下，此框架居然是使用两种方式，即继承使用UIScrollViewDelegate，也支持使用UITableVIew的UIScrollViewDelegate来调用父类的方法
+    使用继承的方式，这里通过使用PullingRefreshTableView做为UITableVIew 的父类，在父类的UIScrollViewDelegate回调里面直接处理（内容其实是跟上面一样的）下拉上拉的逻辑动画等，补充下，此框架居然是使用两种方式，即继承使用UIScrollViewDelegate，也支持使用UITableVIew的UIScrollViewDelegate来调用父类的方法
    （等同与EGOTableViewPullRefresh）
 
 
@@ -69,7 +69,7 @@ C、为UIScrollView或者UITableVIew添加类别
    
    代码说明：http://blog.csdn.net/hitwhylz/article/details/19046725
    
-   这种就是通过UIScrollView+MJRefresh类别来获取UIScrollView事件的，而且此框架将刷新与加载的UIView集成到类别里面，所以只需在对应的UITableVIew调用相应的add方法就可以快速添加UIView了，相对简便。
+    这种就是通过UIScrollView+MJRefresh类别来获取UIScrollView事件的，而且此框架将刷新与加载的UIView集成到类别里面，所以只需在对应的UITableVIew调用相应的add方法就可以快速添加UIView了，相对简便。
 
  1. 添加头部控件的方法
  
@@ -105,5 +105,5 @@ C、为UIScrollView或者UITableVIew添加类别
 
 D、我的实现
 
-   我的做法比较倾向与A，因为这样更方便的分离和单独给UIScrollView使用，然后结合B和C一些写法来实现，此代码要继续优化的哈
+    我的做法比较倾向与A，因为这样更方便的分离和单独给UIScrollView使用，然后结合B和C一些写法来实现，此代码要继续优化的哈
 
