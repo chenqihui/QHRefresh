@@ -39,7 +39,7 @@
     [_tableView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_tableView];
     
-    _qhRefresh = [[QHPullRefreshAndLoadMore alloc] initRefreshWithScroll:_tableView pullRefreshView:60 presentType:QHRefreshHeaderViewPresentTypeBehindTableView loadMoreView:30 delegate:self titile:nil];
+    _qhRefresh = [[QHPullRefreshAndLoadMore alloc] initRefreshWithScroll:_tableView pullRefreshView:60 presentType:QHRefreshHeaderViewPresentTypeDefault loadMoreView:30 delegate:self titile:nil];
 }
 
 #pragma mark - Table view data source
